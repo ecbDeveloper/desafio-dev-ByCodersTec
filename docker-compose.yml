@@ -1,0 +1,16 @@
+name: 'db_desafio'
+services:
+  db:
+    image: bitnami/postgresql:latest
+    ports:
+      - "5434:5434"
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=desafio
+      - POSTGRESQL_PORT_NUMBER=5434
+    volumes:
+      - desafio:/bitnami/postgresql
+      - ./database/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  desafio:
